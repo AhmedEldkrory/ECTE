@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive English Flashcards</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="container">
+      <h1 class="text-center mb-2">Interactive English Flashcards</h1>
+      <p class="text-center mb-0">Developed by Dr. Mazen Badawy - Doctor of Teaching and Testing</p>
+    </div>
+  </header>
+
+  <!-- Top Controls -->
+  <section class="top-controls py-3">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-6">
+          <div class="input-group">
+            <select id="wordListSelect" class="form-select">
+              <option value="custom">Custom Text</option>
+              <option value="upload">Upload File</option>
+            </select>
+            <button id="loadCardsBtn" class="btn btn-success">Load Cards</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Navigation Bar -->
+  <nav class="nav-bar">
+    <div class="container">
+      <ul class="nav justify-content-center">
+        <li class="nav-item">
+          <button class="nav-btn active" data-mode="memorize">Memorize</button>
+        </li>
+        <li class="nav-item">
+          <button class="nav-btn" data-mode="search">Search</button>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Controls Row -->
+  <section class="controls py-2">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-md-4">
+          <label for="voiceSpeed" class="form-label">Voice Speed</label>
+          <input type="range" class="form-range" id="voiceSpeed" min="0.5" max="2" step="0.1" value="1">
+        </div>
+        <div class="col-md-4 text-center">
+          <div id="progressIndicator" class="fw-bold"></div>
+        </div>
+        <div class="col-md-4 text-end">
+          <button id="exportBtn" class="btn btn-success me-2">Export XLSX</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Memorize Controls (hidden initially) -->
+  <section id="memorizeControls" class="memorize-controls py-2" style="display: none;">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-6 text-center">
+          <button id="shuffleBtn" class="btn btn-primary me-2">Shuffle</button>
+          <button id="autoplayBtn" class="btn btn-info me-2">Autoplay</button>
+          <button id="nextBtn" class="btn btn-success">Next</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Search Input (hidden initially) -->
+  <section id="searchSection" class="search-section py-3" style="display: none;">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-6">
+          <div class="input-group">
+            <input type="text" id="searchInput" class="form-control" placeholder="Search by English or Arabic...">
+            <button id="searchBtn" class="btn btn-primary">Search</button>
+          </div>
+          <div id="suggestions" class="dropdown-menu w-100" style="display: none; max-height: 200px; overflow-y: auto;"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Inputs Section (for Custom) -->
+  <section id="inputsSection" class="inputs-section py-4">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-8">
+          <!-- File Upload -->
+          <div class="card shadow mb-3">
+            <div class="card-body">
+              <h5 class="card-title">Upload File</h5>
+              <input type="file" id="fileInput" class="form-control mb-2" accept=".pdf,.txt">
+              <button id="uploadBtn" class="btn btn-primary">Upload & Process</button>
+            </div>
+          </div>
+          <!-- Manual Input -->
+          <div class="card shadow">
+            <div class="card-body">
+              <h5 class="card-title">Add Manual Flashcard</h5>
+              <input type="text" id="manualWord" class="form-control mb-2" placeholder="English Word">
+              <textarea id="manualDef" class="form-control mb-2" rows="2" placeholder="English Definition"></textarea>
+              <button id="manualBtn" class="btn btn-primary">Add Flashcard</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Cards Area -->
+  <main id="cardsArea" class="cards-area py-4">
+    <div class="container">
+      <!-- Grid View for Search -->
+      <div id="gridView">
+        <div id="termsContainer" class="row">
+          <!-- Bilingual cards will be inserted here -->
+        </div>
+      </div>
+
+      <!-- Single Card View for Memorize -->
+      <div id="singleCardView" style="display: none;">
+        <div class="row justify-content-center">
+          <div class="col-md-8">
+            <div id="singleCard" class="card single-flashcard text-center">
+              <!-- Single card content will be inserted here -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container text-center">
+      <div class="row">
+        <div class="col">
+          <i class="fas fa-book" style="font-size: 2rem; color: #28a745;"></i>
+          <i class="fas fa-volume-up ms-3" style="font-size: 2rem; color: #1976d2;"></i>
+          <i class="fas fa-share-alt ms-3" style="font-size: 2rem; color: #6c757d;"></i>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
