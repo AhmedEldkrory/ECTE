@@ -1,4 +1,4 @@
-# Interactive English Flashcards
+# Engineering Concepts & Terms Elicitation
 
 An interactive flashcard app for English-Arabic vocabulary learning, with pronunciation, file upload, and manual entry support.
 
