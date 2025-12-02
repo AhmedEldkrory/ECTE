@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ETCE - Engineering Terms & Concepts</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="background-animation">
+        <div class="gradient-orb orb-1"></div>
+        <div class="gradient-orb orb-2"></div>
+        <div class="gradient-orb orb-3"></div>
+    </div>
+
+    <div class="container">
+        <header class="header">
+            <div class="logo">
+                <i class="fas fa-graduation-cap"></i>
+                <h1>ETCE</h1>
+                <span class="subtitle">Engineering Terms & Concepts</span>
+            </div>
+            <nav class="nav-links">
+                <a href="/admin" class="nav-link">
+                    <i class="fas fa-cog"></i> Admin
+                </a>
+            </nav>
+        </header>
+
+        <main class="main-content">
+            <div class="control-panel glass-card">
+                <div class="panel-header">
+                    <h2><i class="fas fa-sliders-h"></i> Controls</h2>
+                </div>
+                
+                <div class="input-section">
+                    <div class="input-group">
+                        <label for="mode-select"><i class="fas fa-list"></i> Mode</label>
+                        <select id="mode-select" class="modern-select">
+                            <option value="memorize">Memorize Mode</option>
+                            <option value="search">Search Mode</option>
+                            <option value="upload">Upload File</option>
+                            <option value="manual">Custom Text</option>
+                        </select>
+                    </div>
+
+                    <div id="upload-section" class="input-group hidden">
+                        <label for="file-input"><i class="fas fa-file-upload"></i> Upload File (PDF/TXT)</label>
+                        <div class="file-upload-wrapper">
+                            <input type="file" id="file-input" accept=".pdf,.txt" class="file-input">
+                            <label for="file-input" class="file-label">
+                                <i class="fas fa-cloud-upload-alt"></i>
+                                <span>Choose File</span>
+                            </label>
+                            <button id="upload-btn" class="btn btn-primary">
+                                <i class="fas fa-upload"></i> Upload & Process
+                            </button>
+                        </div>
+                    </div>
+
+                    <div id="manual-section" class="input-group hidden">
+                        <label for="english-word"><i class="fas fa-keyboard"></i> English Word</label>
+                        <input type="text" id="english-word" class="modern-input" placeholder="Enter English word">
+                        
+                        <label for="english-definition"><i class="fas fa-book"></i> Definition</label>
+                        <textarea id="english-definition" class="modern-input" rows="3" placeholder="Enter English definition"></textarea>
+                        
+                        <button id="manual-btn" class="btn btn-primary">
+                            <i class="fas fa-plus"></i> Add Flashcard
+                        </button>
+                    </div>
+
+                    <div id="search-section" class="input-group hidden">
+                        <label for="search-input"><i class="fas fa-search"></i> Search</label>
+                        <input type="text" id="search-input" class="modern-input" placeholder="Search terms...">
+                    </div>
+
+                    <div class="button-group">
+                        <button id="load-btn" class="btn btn-primary">
+                            <i class="fas fa-download"></i> Load Cards
+                        </button>
+                        <button id="export-btn" class="btn btn-secondary">
+                            <i class="fas fa-file-excel"></i> Export Excel
+                        </button>
+                    </div>
+                </div>
+
+                <div class="controls-section">
+                    <div class="control-item">
+                        <label for="voice-speed"><i class="fas fa-tachometer-alt"></i> Voice Speed</label>
+                        <input type="range" id="voice-speed" min="0.5" max="2" step="0.1" value="1" class="slider">
+                        <span id="speed-value">1.0x</span>
+                    </div>
+                    <div class="control-buttons">
+                        <button id="shuffle-btn" class="btn btn-icon" title="Shuffle">
+                            <i class="fas fa-random"></i>
+                        </button>
+                        <button id="autoplay-btn" class="btn btn-icon" title="Autoplay">
+                            <i class="fas fa-play"></i>
+                        </button>
+                        <button id="prev-btn" class="btn btn-icon" title="Previous">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <button id="next-btn" class="btn btn-icon" title="Next">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flashcard-container">
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progress-fill"></div>
+                    <span class="progress-text" id="progress-text">0 / 0</span>
+                </div>
+
+                <div id="flashcard-wrapper" class="flashcard-wrapper">
+                    <div class="welcome-message">
+                        <i class="fas fa-book-open"></i>
+                        <h2>Welcome to ETCE</h2>
+                        <p>Load your flashcards to get started!</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <div id="notification" class="notification"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
+
