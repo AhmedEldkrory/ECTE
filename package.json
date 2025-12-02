@@ -1,0 +1,29 @@
+{
+  "name": "engineering-terms-concepts-elicitation",
+  "version": "1.0.0",
+  "description": "Engineering Terms and Concepts Elicitation (ETCE) - Interactive English-Arabic flashcard app with pronunciation and file upload",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js",
+    "seed": "node seed.js"
+  },
+  "engines": {
+    "node": ">=14.0.0",
+    "npm": ">=6.0.0"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "sqlite3": "^5.1.6",
+    "openai": "^4.20.1",
+    "dotenv": "^16.3.1",
+    "xlsx": "^0.18.5",
+    "cors": "^2.8.5",
+    "async": "^3.2.4",
+    "multer": "^1.4.5-lts.1",
+    "pdf-parse": "^1.1.1"
+  },
+  "keywords": ["engineering", "terms", "concepts", "elicitation", "ETCE", "flashcards", "english", "arabic", "pronunciation", "openai", "sqlite"],
+  "author": "Mazen Badwey",
+  "license": "MIT"
+}

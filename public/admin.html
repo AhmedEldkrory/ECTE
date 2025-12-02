@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ETCE - Admin Panel</title>
+    <link rel="stylesheet" href="admin.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="background-animation">
+        <div class="gradient-orb orb-1"></div>
+        <div class="gradient-orb orb-2"></div>
+        <div class="gradient-orb orb-3"></div>
+    </div>
+
+    <div class="container">
+        <header class="header">
+            <div class="logo">
+                <i class="fas fa-cog"></i>
+                <h1>Admin Panel</h1>
+            </div>
+            <nav class="nav-links">
+                <a href="/" class="nav-link">
+                    <i class="fas fa-home"></i> Home
+                </a>
+            </nav>
+        </header>
+
+        <main class="main-content">
+            <div class="admin-panel glass-card">
+                <div class="panel-header">
+                    <h2><i class="fas fa-plus-circle"></i> Add New Term</h2>
+                </div>
+                
+                <form id="add-term-form" class="term-form">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="add-english"><i class="fas fa-language"></i> English Word</label>
+                            <input type="text" id="add-english" class="modern-input" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="add-arabic"><i class="fas fa-language"></i> Arabic Translation</label>
+                            <input type="text" id="add-arabic" class="modern-input" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="add-icon"><i class="fas fa-smile"></i> Icon/Emoji</label>
+                            <input type="text" id="add-icon" class="modern-input" placeholder="📚">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="add-definition-en"><i class="fas fa-book"></i> English Definition</label>
+                        <textarea id="add-definition-en" class="modern-input" rows="3" required></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="add-definition-ar"><i class="fas fa-book"></i> Arabic Definition</label>
+                        <textarea id="add-definition-ar" class="modern-input" rows="3" required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-plus"></i> Add Term
+                    </button>
+                </form>
+            </div>
+
+            <div class="search-panel glass-card">
+                <div class="panel-header">
+                    <h2><i class="fas fa-search"></i> Search Terms</h2>
+                </div>
+                <div class="search-wrapper">
+                    <input type="text" id="admin-search" class="modern-input" placeholder="Search by English or Arabic...">
+                    <button id="search-btn" class="btn btn-primary">
+                        <i class="fas fa-search"></i> Search
+                    </button>
+                </div>
+            </div>
+
+            <div class="terms-list glass-card">
+                <div class="panel-header">
+                    <h2><i class="fas fa-list"></i> All Terms</h2>
+                    <button id="refresh-btn" class="btn btn-icon">
+                        <i class="fas fa-sync-alt"></i>
+                    </button>
+                </div>
+                
+                <div id="terms-container" class="terms-container">
+                    <div class="loading-message">
+                        <i class="fas fa-spinner fa-spin"></i>
+                        <p>Loading terms...</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <div id="notification" class="notification"></div>
+
+    <!-- Edit Modal -->
+    <div id="edit-modal" class="modal">
+        <div class="modal-content glass-card">
+            <div class="modal-header">
+                <h2><i class="fas fa-edit"></i> Edit Term</h2>
+                <button class="modal-close" onclick="closeEditModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <form id="edit-term-form" class="term-form">
+                <input type="hidden" id="edit-id">
+                
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="edit-english"><i class="fas fa-language"></i> English Word</label>
+                        <input type="text" id="edit-english" class="modern-input" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="edit-arabic"><i class="fas fa-language"></i> Arabic Translation</label>
+                        <input type="text" id="edit-arabic" class="modern-input" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="edit-icon"><i class="fas fa-smile"></i> Icon/Emoji</label>
+                        <input type="text" id="edit-icon" class="modern-input">
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="edit-definition-en"><i class="fas fa-book"></i> English Definition</label>
+                    <textarea id="edit-definition-en" class="modern-input" rows="3" required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="edit-definition-ar"><i class="fas fa-book"></i> Arabic Definition</label>
+                    <textarea id="edit-definition-ar" class="modern-input" rows="3" required></textarea>
+                </div>
+                
+                <div class="modal-actions">
+                    <button type="button" class="btn btn-secondary" onclick="closeEditModal()">Cancel</button>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-save"></i> Save Changes
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="admin.js"></script>
+</body>
+</html>
+
+
